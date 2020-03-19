@@ -1,0 +1,42 @@
+<ng-container *ngIf="cube; else createCubeBtn">
+  <div class="cube">
+    <button (click)="destroyCube()">destroy cube</button>
+    <div>number of sides: {{ cube.sides.length }}</div>
+
+    <div>
+      light:
+      <button (click)="cube.lightOn()">light on</button>
+      <button (click)="cube.lightOff()">light off</button>
+      <button (click)="cube.switchLight()">switch light</button>
+    </div>
+
+    <div>
+      light color:
+      <button (click)="cube.changeLightColor(lightColors.red)">{{lightColors.red}}</button>
+      <button (click)="cube.changeLightColor(lightColors.aquamarine)">{{lightColors.aquamarine}}</button>
+    </div>
+
+    <div>
+      light level:
+      <button (click)="cube.changeLightLevel(lightLevels.low)">{{lightLevels.low}}</button>
+      <button (click)="cube.changeLightLevel(lightLevels.middle)">{{lightLevels.middle}}</button>
+      <button (click)="cube.changeLightLevel(lightLevels.high)">{{lightLevels.high}}</button>
+    </div>
+
+    <div class="sides-wrapper">
+      <div class="cube__side" *ngFor="let side of cube.sides; let i = index"
+           [class.cube__side--glowing]="side.glowing?.active"
+           [ngClass]="side.glowing?.active ? 'cube__side--glowing--' + side.glowing.lightColor + side.glowing.lightLevel : ''">
+        <ng-container *ngIf="side.glowing as glowing">
+          side-{{ i }}: {{ glowing.active ? 'active' : 'inactive' }}<br>
+          lightLevel = {{ glowing.lightLevel }}<br>
+          lightColor = {{ glowing.lightColor }}<br>
+          <button (click)="side.switchLight()">light {{ glowing.active ? 'off' : 'on' }}</button>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<ng-template #createCubeBtn>
+  <button (click)="createCube()">create cube</button>
+</ng-template>

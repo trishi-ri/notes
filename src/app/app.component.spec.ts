@@ -25,12 +25,4 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'notes'`, () => {
-    expect(app.title).toEqual('notes');
-  });
-
-  it('should render title', () => {
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('notes app is running!');
-  });
 });
