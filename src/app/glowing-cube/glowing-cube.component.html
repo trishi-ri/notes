@@ -25,13 +25,13 @@
 
     <div class="sides-wrapper">
       <div class="cube__side" *ngFor="let side of cube.sides; let i = index"
+           (click)="side.switchLight()"
            [class.cube__side--glowing]="side.glowing?.active"
            [ngClass]="side.glowing?.active ? 'cube__side--glowing--' + side.glowing.lightColor + side.glowing.lightLevel : ''">
         <ng-container *ngIf="side.glowing as glowing">
           side-{{ i }}: {{ glowing.active ? 'active' : 'inactive' }}<br>
           lightLevel = {{ glowing.lightLevel }}<br>
           lightColor = {{ glowing.lightColor }}<br>
-          <button (click)="side.switchLight()">light {{ glowing.active ? 'off' : 'on' }}</button>
         </ng-container>
       </div>
     </div>
