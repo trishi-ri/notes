@@ -1,7 +1,7 @@
-<ng-container *ngIf="side.glowing as glowing">
+<ng-container *ngIf="side?.glowing as glowing">
   glowing: {{ glowing.active ? 'active' : 'inactive' }}<br>
   <ng-container *ngIf="glowing.active">
     lightLevel = {{ lightLevels[glowing.lightLevel] }}<br>
-    lightColor = {{ glowing.lightColor }}<br>
+    lightColor = {{ lightColors[glowing.lightColor] }}<br>
   </ng-container>
 </ng-container>

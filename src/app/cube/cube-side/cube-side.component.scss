@@ -1,7 +1,9 @@
+$lightLevels: ('low': 1, 'middle': 2, 'high': 3);
+
 @mixin glowing($color) {
-  @for $i from 1 through 3 {
-    &--#{'' + $color}#{$i} {
-      box-shadow: 0 0 ($i + 1)*5px $color;
+  @each $levelName, $levelValue in $lightLevels {
+    &--#{'' + $color}-#{$levelName} {
+      box-shadow: 0 0 $levelValue*5px $color;
     }
   }
 }

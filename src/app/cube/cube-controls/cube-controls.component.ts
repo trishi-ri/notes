@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { LightColorEnum, LightLevelEnum } from '../cube-side/glowing.config';
+import { LightColorEnum, LightLevelEnum } from '../cube-side/glowing.model';
 
 @Component({
   selector: 'app-cube-controls',
@@ -47,18 +47,18 @@ export class CubeControlsComponent implements OnInit {
   private createLightColorEnumArray(): EnumArrayItem[] {
     return Object.keys(LightColorEnum)
       .filter(key => typeof LightColorEnum[key] === 'string')
-      .map(key => new EnumArrayItem(key, LightColorEnum[key]));
+      .map(key => new EnumArrayItem(Number(key), LightColorEnum[key]));
   }
 
   private createLightLevelEnumArray(): EnumArrayItem[] {
     return Object.keys(LightLevelEnum)
       .filter(key => typeof LightLevelEnum[key] === 'string')
-      .map(key => new EnumArrayItem(key, LightLevelEnum[key]));
+      .map(key => new EnumArrayItem(Number(key), LightLevelEnum[key]));
   }
 
 }
 
 class EnumArrayItem {
-  constructor(public id: string, public name: string) {
+  constructor(public id: number, public name: string) {
   }
 }

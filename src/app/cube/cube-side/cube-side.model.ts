@@ -1,9 +1,9 @@
-import { GlowingConfig } from './glowing.config';
+import { GlowingModel, IGlowingModel } from './glowing.model';
 
 export class CubeSide {
-  glowing: GlowingConfig;
+  glowing: GlowingModel;
 
-  constructor(args?: { glowing?: GlowingConfig }) {
-    this.glowing = args && args.glowing ? args.glowing : new GlowingConfig();
+  constructor(args?: { glowing?: IGlowingModel }) {
+    this.glowing = new GlowingModel(args && args.glowing ? args.glowing : null);
   }
 }

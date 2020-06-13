@@ -1,6 +1,6 @@
 import { Component, HostBinding, Input, OnInit } from '@angular/core';
 import { CubeSide } from './cube-side.model';
-import { GlowingConfig, LightLevelEnum } from './glowing.config';
+import { GlowingModel, LightColorEnum, LightLevelEnum } from './glowing.model';
 
 @Component({
   selector: 'app-cube-side',
@@ -12,14 +12,15 @@ export class CubeSideComponent implements OnInit {
 
   @HostBinding('class') get hostClasses(): string {
     // todo (refactoring): убрать свечение в директиву?
-    const glowing: GlowingConfig = this.side.glowing;
+    const glowing: GlowingModel = this.side && this.side.glowing;
     return [
       glowing && glowing.active ? 'glowing' : '',
-      glowing && glowing.active ? `glowing--${glowing.lightColor}${glowing.lightLevel}` : ''
-    ].join(' ');
+      glowing && glowing.active ? `glowing--${LightColorEnum[glowing.lightColor]}-${LightLevelEnum[glowing.lightLevel]}` : ''
+    ].filter(className => className).join(' ');
   }
 
   lightLevels = LightLevelEnum;
+  lightColors = LightColorEnum;
 
   constructor() {
   }
