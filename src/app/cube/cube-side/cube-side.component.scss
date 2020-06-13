@@ -1,0 +1,18 @@
+@mixin glowing($color) {
+  @for $i from 1 through 3 {
+    &--#{'' + $color}#{$i} {
+      box-shadow: 0 0 ($i + 1)*5px $color;
+    }
+  }
+}
+
+:host {
+  cursor: pointer;
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px;
+  &.glowing {
+    @include glowing(red);
+    @include glowing(aquamarine);
+  }
+}

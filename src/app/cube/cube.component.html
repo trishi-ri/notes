@@ -1,0 +1,13 @@
+<div>number of sides: {{ cube.sides.length }}</div>
+
+<app-cube-controls
+  (lightOnEvent)="lightOn()"
+  (lightOffEvent)="lightOff()"
+  (switchLightEvent)="switchLight()"
+  (changeLightColorEvent)="changeLightColor($event)"
+  (changeLightLevelEvent)="changeLightLevel($event)"
+></app-cube-controls>
+
+<div class="sides-wrapper">
+  <app-cube-side *ngFor="let side of cube.sides" (click)="side.glowing.switchLight()" [side]="side"></app-cube-side>
+</div>

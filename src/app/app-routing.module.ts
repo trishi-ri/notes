@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { GlowingCubeComponent } from './glowing-cube/glowing-cube.component';
-import { SampleComponent } from './sample/sample.component';
 
 const routes: Routes = [
-  { path: 'sample', component: SampleComponent },
-  { path: 'cube', component: GlowingCubeComponent },
+  { path: 'sample', loadChildren: () => import('./sample/sample.module').then(m => m.SampleModule) },
+  { path: 'cube', loadChildren: () => import(`./cube/cube.module`).then(m => m.CubeModule) },
   { path: '', redirectTo: 'sample', pathMatch: 'full' },
   { path: '**', redirectTo: 'sample' }
 ];
