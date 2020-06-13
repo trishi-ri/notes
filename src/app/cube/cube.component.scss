@@ -1,0 +1,13 @@
+
+:host {
+  display: block;
+  padding: 20px;
+  text-align: center;
+
+  .sides-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+}
