@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CubeModel, LightColorEnum, LightLevelEnum } from './cube.model';
+import { CubeModel } from './cube.model';
+import { CubeSide } from './cube-side/cube-side.model';
+import { LightColorEnum, LightLevelEnum } from './cube-side/glowing.config';
 
 @Component({
   selector: 'app-cube',
@@ -15,13 +17,26 @@ export class CubeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  createCube(): void {
     this.cube = new CubeModel();
   }
 
-  destroyCube(): void {
-    this.cube = undefined;
+  lightOn(): void {
+    this.cube.sides.forEach((side: CubeSide) => side.glowing.lightOn());
+  }
+
+  lightOff(): void {
+    this.cube.sides.forEach((side: CubeSide) => side.glowing.lightOff());
+  }
+
+  switchLight(): void {
+    this.cube.sides.forEach((side: CubeSide) => side.glowing.switchLight());
+  }
+
+  changeLightColor(newColor: LightColorEnum): void {
+    this.cube.sides.forEach((side: CubeSide) => side.glowing.changeColor(newColor));
+  }
+
+  changeLightLevel(newLevel: LightLevelEnum): void {
+    this.cube.sides.forEach((side: CubeSide) => side.glowing.changeLevel(newLevel));
   }
 }
