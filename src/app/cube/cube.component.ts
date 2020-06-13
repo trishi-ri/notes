@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CubeModel } from './cube.model';
 import { CubeSide } from './cube-side/cube-side.model';
-import { LightColorEnum, LightLevelEnum } from './cube-side/glowing.config';
+import { LightColorEnum, LightLevelEnum } from './cube-side/glowing.model';
 
 @Component({
   selector: 'app-cube',
@@ -11,8 +11,6 @@ import { LightColorEnum, LightLevelEnum } from './cube-side/glowing.config';
 export class CubeComponent implements OnInit {
 
   cube: CubeModel;
-  lightColors = LightColorEnum;
-  lightLevels = LightLevelEnum;
 
   constructor() { }
 
@@ -21,22 +19,26 @@ export class CubeComponent implements OnInit {
   }
 
   lightOn(): void {
-    this.cube.sides.forEach((side: CubeSide) => side.glowing.lightOn());
+    this.cube.sides.forEach((side: CubeSide) => side.glowing.active = true);
   }
 
   lightOff(): void {
-    this.cube.sides.forEach((side: CubeSide) => side.glowing.lightOff());
+    this.cube.sides.forEach((side: CubeSide) => side.glowing.active = false);
   }
 
   switchLight(): void {
-    this.cube.sides.forEach((side: CubeSide) => side.glowing.switchLight());
+    this.cube.sides.forEach((side: CubeSide) => this.switchLightSide(side));
   }
 
   changeLightColor(newColor: LightColorEnum): void {
-    this.cube.sides.forEach((side: CubeSide) => side.glowing.changeColor(newColor));
+    this.cube.sides.forEach((side: CubeSide) => side.glowing.lightColor = newColor);
   }
 
   changeLightLevel(newLevel: LightLevelEnum): void {
-    this.cube.sides.forEach((side: CubeSide) => side.glowing.changeLevel(newLevel));
+    this.cube.sides.forEach((side: CubeSide) => side.glowing.lightLevel = newLevel);
+  }
+
+  switchLightSide(side: CubeSide): void {
+    side.glowing.active = !side.glowing.active;
   }
 }

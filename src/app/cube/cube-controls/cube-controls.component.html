@@ -7,10 +7,10 @@
 
 <div>
   light color:
-  <button class="control-btn" *ngFor="let lightColor of lightColors" (click)="changeLightColor(lightColor.id)" [attr.data-test]="'cube-controls_button_changeLightColor_' + lightColor.id">{{lightColor.name}}</button>
+  <button class="control-btn" *ngFor="let lightColor of lightColors" (click)="changeLightColor(lightColor.id)" [attr.data-test]="'cube-controls_button_changeLightColor_' + lightColor.name">{{lightColor.name}}</button>
 </div>
 
 <div>
   light level:
-  <button class="control-btn" *ngFor="let lightLevel of lightLevels" (click)="changeLightLevel(lightLevel.id)" [attr.data-test]="'cube-controls_button_changeLightLevel_' + lightLevel.id">{{lightLevel.name}}</button>
+  <button class="control-btn" *ngFor="let lightLevel of lightLevels" (click)="changeLightLevel(lightLevel.id)" [attr.data-test]="'cube-controls_button_changeLightLevel_' + lightLevel.name">{{lightLevel.name}}</button>
 </div>
