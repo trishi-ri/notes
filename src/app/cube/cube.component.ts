@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { CubeModel, LightColorEnum, LightLevelEnum } from './glowing-cube.model';
+import { CubeModel, LightColorEnum, LightLevelEnum } from './cube.model';
 
 @Component({
-  selector: 'app-glowing-cube',
-  templateUrl: './glowing-cube.component.html',
-  styleUrls: ['./glowing-cube.component.scss']
+  selector: 'app-cube',
+  templateUrl: './cube.component.html',
+  styleUrls: ['./cube.component.scss']
 })
-export class GlowingCubeComponent implements OnInit {
+export class CubeComponent implements OnInit {
 
   cube: CubeModel;
   lightColors = LightColorEnum;
