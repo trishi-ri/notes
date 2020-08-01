@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { LightColorEnum, LightLevelEnum } from '../cube-side/glowing.model';
+import { LightColorEnum, LightLevelEnum } from '../glowing/glowing.model';
 
 @Component({
   selector: 'app-cube-controls',
@@ -59,6 +59,10 @@ export class CubeControlsComponent implements OnInit {
 }
 
 class EnumArrayItem {
-  constructor(public id: number, public name: string) {
+  id: number;
+  name: string;
+  constructor(id: number, name: string) {
+    this.id = id;
+    this.name = name;
   }
 }

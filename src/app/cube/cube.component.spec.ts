@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CubeComponent } from './cube.component';
-import { LightColorEnum, LightLevelEnum } from './cube-side/glowing.model';
+import { LightColorEnum, LightLevelEnum } from './glowing/glowing.model';
 import { CubeSideComponent } from './cube-side/cube-side.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 
