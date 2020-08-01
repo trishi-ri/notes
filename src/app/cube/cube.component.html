@@ -9,6 +9,9 @@
 <ng-container *ngIf="cube.sides as sides">
   <div>number of sides: {{ sides.length }}</div>
   <div class="sides-wrapper">
-    <app-cube-side *ngFor="let side of sides" (click)="switchLightSide(side)" [side]="side"></app-cube-side>
+    <app-cube-side *ngFor="let side of sides" [side]="side"
+                   (click)="side.switchLight"
+                   [appGlowing]="side.glowing.active" [glowingLevel]="side.glowing.lightLevel" [glowingColor]="side.glowing.lightColor"
+    ></app-cube-side>
   </div>
 </ng-container>

@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CubeControlsComponent } from './cube-controls.component';
-import { LightColorEnum, LightLevelEnum } from '../cube-side/glowing.model';
+import { LightColorEnum, LightLevelEnum } from '../glowing/glowing.model';
 
 describe('CubeControlsComponent', () => {
   let component: CubeControlsComponent;
