@@ -8,9 +8,9 @@ describe('GlowingModel', () => {
       lightLevel: LightLevelEnum.low
     } as IGlowingModel;
     const glowing = new GlowingModel();
-    expect(glowing.active).toEqual(defaultGlowing.active);
-    expect(glowing.lightLevel).toEqual(defaultGlowing.lightLevel);
-    expect(glowing.lightColor).toEqual(defaultGlowing.lightColor);
+    expect(glowing.active).toBe(defaultGlowing.active);
+    expect(glowing.lightLevel).toBe(defaultGlowing.lightLevel);
+    expect(glowing.lightColor).toBe(defaultGlowing.lightColor);
   });
 
   it('should create with selected params', () => {
@@ -20,8 +20,8 @@ describe('GlowingModel', () => {
       lightLevel: LightLevelEnum.high
     } as IGlowingModel;
     const glowing = new GlowingModel(selectedGlowing);
-    expect(glowing.active).toEqual(selectedGlowing.active);
-    expect(glowing.lightLevel).toEqual(selectedGlowing.lightLevel);
-    expect(glowing.lightColor).toEqual(selectedGlowing.lightColor);
+    expect(glowing.active).toBe(selectedGlowing.active);
+    expect(glowing.lightLevel).toBe(selectedGlowing.lightLevel);
+    expect(glowing.lightColor).toBe(selectedGlowing.lightColor);
   });
 });
