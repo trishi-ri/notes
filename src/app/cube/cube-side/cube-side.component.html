@@ -1,7 +1,7 @@
 <ng-container *ngIf="side?.glowing as glowing">
-  glowing: {{ glowing.active ? 'active' : 'inactive' }}<br>
+  <div class="state-changer-wrapper">glowing: <span class='state-changer' (click)="side.switchLight()">{{ glowing.active ? 'active' : 'inactive' }}</span></div>
   <ng-container *ngIf="glowing.active">
-    lightLevel = {{ lightLevels[glowing.lightLevel] }}<br>
-    lightColor = {{ lightColors[glowing.lightColor] }}<br>
+    <div class="state-changer-wrapper">lightLevel = <span class='state-changer' (click)="side.changeLightLevel()">{{ lightLevels[glowing.lightLevel] }}</span></div>
+    <div class="state-changer-wrapper">lightColor = <span class='state-changer' (click)="side.changeLightColor()">{{ lightColors[glowing.lightColor] }}</span></div>
   </ng-container>
 </ng-container>

@@ -1,16 +1,7 @@
-<app-cube-controls
-  (lightOnEvent)="lightOn()"
-  (lightOffEvent)="lightOff()"
-  (switchLightEvent)="switchLight()"
-  (changeLightColorEvent)="changeLightColor($event)"
-  (changeLightLevelEvent)="changeLightLevel($event)"
-></app-cube-controls>
-
 <ng-container *ngIf="cube.sides as sides">
   <div>number of sides: {{ sides.length }}</div>
   <div class="sides-wrapper">
     <app-cube-side *ngFor="let side of sides" [side]="side"
-                   (click)="side.switchLight"
                    [appGlowing]="side.glowing.active" [glowingLevel]="side.glowing.lightLevel" [glowingColor]="side.glowing.lightColor"
     ></app-cube-side>
   </div>
