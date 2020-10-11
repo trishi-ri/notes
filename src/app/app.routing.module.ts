@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  { path: 'sample', loadChildren: () => import('./sample/sample.module').then(m => m.SampleModule) },
+  { path: 'sample', loadChildren: () => import('./sample-page/sample-page.module').then(m => m.SamplePageModule) },
   { path: 'cube', loadChildren: () => import(`./cube/cube.module`).then(m => m.CubeModule) },
   { path: '', redirectTo: 'sample', pathMatch: 'full' },
   { path: '**', redirectTo: 'sample' }

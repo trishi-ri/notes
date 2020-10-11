@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { CubeControlsComponent } from './cube-controls.component';
 import { LightColorEnum, LightLevelEnum } from '../glowing/glowing.model';
@@ -8,7 +8,7 @@ describe('CubeControlsComponent', () => {
   let fixture: ComponentFixture<CubeControlsComponent>;
   let hostElement: HTMLElement;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ CubeControlsComponent ]
     })
