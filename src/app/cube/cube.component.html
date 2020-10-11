@@ -10,7 +10,7 @@
   <div>number of sides: {{ sides.length }}</div>
   <div class="sides-wrapper">
     <app-cube-side *ngFor="let side of sides" [side]="side"
-                   (click)="side.switchLight"
+                   (click)="switchLight(side)"
                    [appGlowing]="side.glowing.active" [glowingLevel]="side.glowing.lightLevel" [glowingColor]="side.glowing.lightColor"
     ></app-cube-side>
   </div>

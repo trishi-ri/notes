@@ -42,6 +42,15 @@ describe('CubeComponent', () => {
       expect(component.cube.sides.every((side, i) => side.glowing.active === !startingStates[i])).toBeTrue();
     });
 
+    it('should switch light one side', () => {
+      const startingStates = component.cube.sides.map(side => side.glowing.active);
+      component.switchLight(component.cube.sides[0]);
+      expect(component.cube.sides[0].glowing.active === !startingStates[0]).toBeTrue();
+      expect(component.cube.sides[1].glowing.active === startingStates[1]).toBeTrue();
+      expect(component.cube.sides[2].glowing.active === startingStates[2]).toBeTrue();
+      expect(component.cube.sides[3].glowing.active === startingStates[3]).toBeTrue();
+    });
+
     it('should change light color all sides', () => {
       component.changeLightColor(LightColorEnum.red);
       expect(component.cube.sides.every(side => side.glowing.lightColor === LightColorEnum.red)).toBeTrue();

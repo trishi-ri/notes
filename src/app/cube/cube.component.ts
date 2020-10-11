@@ -28,8 +28,12 @@ export class CubeComponent implements OnInit {
     this.cube.sides.forEach((side: CubeSide) => side.glowing.active = false);
   }
 
-  switchLight(): void {
-    this.cube.sides.forEach((side: CubeSide) => side.switchLight());
+  switchLight(currentSide?: CubeSide): void {
+    if (currentSide) {
+      currentSide.switchLight();
+    } else {
+      this.cube.sides.forEach((side: CubeSide) => side.switchLight());
+    }
   }
 
   changeLightColor(newColor: LightColorEnum): void {
