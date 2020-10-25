@@ -1,12 +1,14 @@
 import { CubeSide } from './cube-side.model';
-import { GlowingModel, IGlowingModel, LightColorEnum, LightLevelEnum } from '../glowing/glowing.model';
+import { GlowingModel, IGlowingModel } from '../glowing/glowing.model';
+import { GlowingLevelEnum } from '../glowing/glowing-parameters/level/glowing-level.model';
+import { GlowingColorEnum } from '../glowing/glowing-parameters/color/glowing-color.model';
 
 describe('CubeSide', () => {
   it('should create with default params', () => {
     const defaultGlowing = new GlowingModel({
       active: true,
-      lightColor: LightColorEnum.red,
-      lightLevel: LightLevelEnum.low
+      lightColor: GlowingColorEnum.red,
+      lightLevel: GlowingLevelEnum.low
     } as IGlowingModel);
     const side = new CubeSide();
     expect(side.glowing).toEqual(defaultGlowing);
@@ -15,8 +17,8 @@ describe('CubeSide', () => {
   it('should create with selected params', () => {
     const selectedGlowing = new GlowingModel({
       active: false,
-      lightColor: LightColorEnum.aquamarine,
-      lightLevel: LightLevelEnum.high
+      lightColor: GlowingColorEnum.aquamarine,
+      lightLevel: GlowingLevelEnum.high
     } as IGlowingModel);
     const side = new CubeSide({glowing: selectedGlowing});
     expect(side.glowing).toEqual(selectedGlowing);
@@ -24,12 +26,12 @@ describe('CubeSide', () => {
 
   describe('changeLightLevel', () => {
     [
-      {initLevel: LightLevelEnum.low, expectLevel: LightLevelEnum.middle},
-      {initLevel: LightLevelEnum.middle, expectLevel: LightLevelEnum.high},
-      {initLevel: LightLevelEnum.high, expectLevel: LightLevelEnum.low}
+      {initLevel: GlowingLevelEnum.low, expectLevel: GlowingLevelEnum.middle},
+      {initLevel: GlowingLevelEnum.middle, expectLevel: GlowingLevelEnum.high},
+      {initLevel: GlowingLevelEnum.high, expectLevel: GlowingLevelEnum.low}
     ]
       .forEach(({initLevel, expectLevel}) => {
-        it(`should change light level (${LightLevelEnum[initLevel]} => ${LightLevelEnum[expectLevel]})`, () => {
+        it(`should change light level (${GlowingLevelEnum[initLevel]} => ${GlowingLevelEnum[expectLevel]})`, () => {
           const side = new CubeSide({glowing: {lightLevel: initLevel}});
           side.changeLightLevel();
           expect(side.glowing.lightLevel).toBe(expectLevel);
@@ -39,11 +41,11 @@ describe('CubeSide', () => {
 
   describe('changeLightColor', () => {
     [
-      {initColor: LightColorEnum.red, expectColor: LightColorEnum.aquamarine},
-      {initColor: LightColorEnum.aquamarine, expectColor: LightColorEnum.red},
+      {initColor: GlowingColorEnum.red, expectColor: GlowingColorEnum.aquamarine},
+      {initColor: GlowingColorEnum.aquamarine, expectColor: GlowingColorEnum.red},
     ]
       .forEach(({initColor, expectColor}) => {
-        it(`should change light color (${LightColorEnum[initColor]} => ${LightColorEnum[expectColor]})`, () => {
+        it(`should change light color (${GlowingColorEnum[initColor]} => ${GlowingColorEnum[expectColor]})`, () => {
           const side = new CubeSide({glowing: {lightColor: initColor}});
           side.changeLightColor();
           expect(side.glowing.lightColor).toBe(expectColor);

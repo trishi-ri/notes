@@ -1,11 +1,13 @@
-import { GlowingModel, IGlowingModel, LightColorEnum, LightLevelEnum } from './glowing.model';
+import { GlowingModel, IGlowingModel } from './glowing.model';
+import { GlowingLevelEnum } from './glowing-parameters/level/glowing-level.model';
+import { GlowingColorEnum } from './glowing-parameters/color/glowing-color.model';
 
 describe('GlowingModel', () => {
   it('should create with default params', () => {
     const defaultGlowing = {
       active: true,
-      lightColor: LightColorEnum.red,
-      lightLevel: LightLevelEnum.low
+      lightColor: GlowingColorEnum.red,
+      lightLevel: GlowingLevelEnum.low
     } as IGlowingModel;
     const glowing = new GlowingModel();
     expect(glowing.active).toBe(defaultGlowing.active);
@@ -16,8 +18,8 @@ describe('GlowingModel', () => {
   it('should create with selected params', () => {
     const selectedGlowing = {
       active: false,
-      lightColor: LightColorEnum.aquamarine,
-      lightLevel: LightLevelEnum.high
+      lightColor: GlowingColorEnum.aquamarine,
+      lightLevel: GlowingLevelEnum.high
     } as IGlowingModel;
     const glowing = new GlowingModel(selectedGlowing);
     expect(glowing.active).toBe(selectedGlowing.active);

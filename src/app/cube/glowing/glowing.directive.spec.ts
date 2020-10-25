@@ -1,9 +1,9 @@
 import { GlowingDirective } from './glowing.directive';
 import { Component, DebugElement } from '@angular/core';
-import { LightColorEnum } from './glowing.model';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { newEvent } from '../../../testing';
+import { GlowingColorEnum } from './glowing-parameters/color/glowing-color.model';
 
 @Component({
   template: `
@@ -65,7 +65,7 @@ describe('GlowingDirective', () => {
     expect(input.style.boxShadow).toBe(testGlowing.boxShadow.selected);
     expect(input.style.boxShadow).toBe(dir.glowingStyle.boxShadow, 'initial boxShadow');
 
-    input.value = LightColorEnum.red.toString();
+    input.value = GlowingColorEnum.red.toString();
     input.dispatchEvent(newEvent('input'));
     fixture.detectChanges();
 
