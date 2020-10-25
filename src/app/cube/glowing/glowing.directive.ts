@@ -1,18 +1,19 @@
 import { Directive, ElementRef, Input, OnChanges } from '@angular/core';
-import { GlowingModel, LightColorEnum, LightLevelEnum } from './glowing.model';
+import { GlowingLevelEnum, GlowingLevelModel } from './glowing-parameters/level/glowing-level.model';
+import { GlowingColorEnum, GlowingColorModel } from './glowing-parameters/color/glowing-color.model';
+import { GlowingActiveModel } from './glowing-parameters/active/glowing-active.model';
 
 @Directive({
   selector: '[appGlowing]'
 })
 export class GlowingDirective implements OnChanges {
   private active: boolean;
-  private defaultGlowing = new GlowingModel();
 
   @Input('appGlowing') set glowingActive(active: boolean | string) {
     this.active = this.defineActive(active);
   }
-  @Input() private glowingLevel: LightLevelEnum = this.defaultGlowing.defaultLevel;
-  @Input() private glowingColor: LightColorEnum = this.defaultGlowing.defaultColor;
+  @Input() private glowingLevel: GlowingLevelEnum = new GlowingLevelModel().value;
+  @Input() private glowingColor: GlowingColorEnum = new GlowingColorModel().value;
 
 
   constructor(private el: ElementRef) {}
@@ -25,7 +26,7 @@ export class GlowingDirective implements OnChanges {
 
   get glowingStyle(): {[key: string]: string} {
     const boxShadow = this.active
-      ? `${LightColorEnum[this.glowingColor]} 0px 0px ${5 * (this.glowingLevel + 1)}px`
+      ? `${GlowingColorEnum[this.glowingColor]} 0px 0px ${5 * (this.glowingLevel + 1)}px`
       : '';
     return {boxShadow};
   }
@@ -33,7 +34,7 @@ export class GlowingDirective implements OnChanges {
   private defineActive(active: boolean | string): boolean {
     switch (typeof active) {
       case 'string':
-        return active === '' ? this.defaultGlowing.defaultActive : (active === 'true');
+        return active === '' ? new GlowingActiveModel().value : (active === 'true');
       case 'boolean':
         return active;
     }

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CubeSide } from './cube-side.model';
-import { LightColorEnum, LightLevelEnum } from '../glowing/glowing.model';
+import { GlowingLevelEnum } from '../glowing/glowing-parameters/level/glowing-level.model';
+import { GlowingColorEnum } from '../glowing/glowing-parameters/color/glowing-color.model';
 
 @Component({
   selector: 'app-cube-side',
@@ -10,8 +11,8 @@ import { LightColorEnum, LightLevelEnum } from '../glowing/glowing.model';
 export class CubeSideComponent implements OnInit {
   @Input() side: CubeSide;
 
-  lightLevels = LightLevelEnum;
-  lightColors = LightColorEnum;
+  lightLevels = GlowingLevelEnum;
+  lightColors = GlowingColorEnum;
 
   constructor() {
   }
