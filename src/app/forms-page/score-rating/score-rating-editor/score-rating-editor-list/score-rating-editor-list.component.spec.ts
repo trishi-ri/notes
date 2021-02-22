@@ -37,4 +37,26 @@ describe('ScoreRatingEditorListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  describe('setDisabledState', () => {
+    it('should disable form', () => {
+      component.setDisabledState(true);
+      expect(component.mainForm.disabled).toBe(true);
+    });
+
+    it('should enable form', () => {
+      component.setDisabledState(false);
+      expect(component.mainForm.enabled).toBe(true);
+    });
+  });
+
+  describe('deleteElement', () => {
+    it('should delete element', () => {
+      component.addElement();
+      expect(component.elements.length).toBe(1);
+      component.deleteElement(0);
+      expect(component.elements.length).toBe(0);
+    });
+  });
+
 });

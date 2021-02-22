@@ -35,4 +35,16 @@ describe('ScoreRatingEditorElementComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  describe('setDisabledState', () => {
+    it('should disable form', () => {
+      component.setDisabledState(true);
+      expect(component.mainForm.disabled).toBe(true);
+    });
+
+    it('should enable form', () => {
+      component.setDisabledState(false);
+      expect(component.mainForm.enabled).toBe(true);
+    });
+  });
 });
