@@ -1,7 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FormsPageComponent } from './forms-page.component';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { ScoreRatingModule } from './score-rating/score-rating.module';
 
 describe('FormsPageComponent', () => {
   let component: FormsPageComponent;
@@ -10,7 +12,7 @@ describe('FormsPageComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ FormsPageComponent ],
-      imports: [ MatGridListModule ]
+      imports: [ MatGridListModule, ScoreRatingModule, BrowserAnimationsModule ]
     })
     .compileComponents();
   });

@@ -1,6 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ScoreRatingEditorComponent } from './score-rating-editor.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('ScoreRatingEditorComponent', () => {
   let component: ScoreRatingEditorComponent;
@@ -8,7 +13,14 @@ describe('ScoreRatingEditorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ScoreRatingEditorComponent ]
+      declarations: [ ScoreRatingEditorComponent ],
+      imports: [
+        MatIconModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        BrowserAnimationsModule
+      ]
     })
     .compileComponents();
   });
