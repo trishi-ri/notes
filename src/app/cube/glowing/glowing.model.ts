@@ -15,27 +15,27 @@ export class GlowingModel {
     }
   }
 
-  public get active(): boolean {
+  get active(): boolean {
     return this.activeModel.value;
   }
 
-  public setNextActive(): void {
+  setNextActive(): void {
     this.activeModel.setNext();
   }
 
-  public get lightLevel(): GlowingLevelEnum {
+  get lightLevel(): GlowingLevelEnum {
     return this.lightLevelModel.value;
   }
 
-  public setNextLightLevel(): void {
+  setNextLightLevel(): void {
     this.lightLevelModel.setNext();
   }
 
-  public get lightColor(): GlowingColorEnum {
+  get lightColor(): GlowingColorEnum {
     return this.lightColorModel.value;
   }
 
-  public setNextLightColor(): void {
+  setNextLightColor(): void {
     this.lightColorModel.setNext();
   }
 
