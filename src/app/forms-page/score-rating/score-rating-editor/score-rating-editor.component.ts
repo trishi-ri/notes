@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
+import { ScoreRatingModel } from '../score-rating.model';
+
+enum FormFieldsEnum {
+  name = 'name',
+  rating = 'rating'
+}
 
 @Component({
   selector: 'app-score-rating-editor',
@@ -7,18 +14,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ScoreRatingEditorComponent implements OnInit {
 
-  elements: number[] = [1];
+  mainForm: FormGroup = new FormGroup(this.formControls);
+  formFieldsEnum = FormFieldsEnum;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
+    const scoreRating: ScoreRatingModel = {
+      name: 'score',
+      rating: [
+        {name: 'first name', value: 1.23},
+      ]
+    };
+    this.mainForm.patchValue(scoreRating);
   }
 
-  addElement(): void {
-    this.elements.push(1);
+  private get formControls(): {
+    [key: string]: AbstractControl;
+  } {
+    return {
+      [FormFieldsEnum.name]: new FormControl(),
+      [FormFieldsEnum.rating]: new FormControl(),
+    };
   }
 
-  deleteElement(index: number): void {
-    this.elements.splice(index, 1);
-  }
 }

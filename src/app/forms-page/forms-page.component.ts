@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-const GRID_COLUMNS = 4;
+const GRID_COLUMNS = 2;
 
 @Component({
   selector: 'app-forms-page',

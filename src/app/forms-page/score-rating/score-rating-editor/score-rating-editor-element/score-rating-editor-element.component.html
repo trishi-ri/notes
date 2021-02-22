@@ -1,0 +1,15 @@
+<form [formGroup]="mainForm" class="element">
+  <mat-form-field appearance="fill" class="field">
+    <mat-label>{{formFieldsEnum.name}}</mat-label>
+    <input matInput [formControlName]="formFieldsEnum.name" >
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="field">
+    <mat-label>{{formFieldsEnum.value}}</mat-label>
+    <input matInput [formControlName]="formFieldsEnum.value" >
+  </mat-form-field>
+
+  <button type="button" mat-mini-fab aria-label="delete" matTooltip="delete" class="btn" (click)="deleteElementEvent.emit()">
+    <mat-icon>delete</mat-icon>
+  </button>
+</form>

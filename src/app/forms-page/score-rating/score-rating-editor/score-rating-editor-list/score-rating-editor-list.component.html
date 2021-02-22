@@ -1,0 +1,12 @@
+<form [formGroup]="mainForm">
+  <ng-container formArrayName="elements">
+    <app-sort-rating-editor-element
+      *ngFor="let _ of elements.controls; index as i"
+      [formControlName]="i"
+      (deleteElementEvent)="deleteElement(i)"
+    ></app-sort-rating-editor-element>
+  </ng-container>
+  <button mat-raised-button aria-label="add" matTooltip="add" (click)="addElement()">
+    <mat-icon>add</mat-icon>
+  </button>
+</form>

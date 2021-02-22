@@ -1,23 +1,14 @@
 :host {
   align-self: flex-start;
   padding: 10px;
-  width: 100%;
-  height: 100%;
 
-  .element {
+  .rating-editor-form {
     display: flex;
-    flex-direction: row;
-    align-items: baseline;
+    flex-direction: column;
 
-    .field + .field, .btn {
-      margin-left: 8px;
-    }
-
-    .btn {
-      align-self: flex-start;
-      margin-top: 4px;
+    .rating-editor-list {
+      margin: 20px 0;
     }
   }
-
 }
 

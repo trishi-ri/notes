@@ -1,18 +1,12 @@
-<div *ngFor="let element of elements; let i = index" class="element">
-  <mat-form-field appearance="fill" class="field">
-    <mat-label>Input</mat-label>
-    <input matInput>
-  </mat-form-field>
+<mat-card>
+  <form [formGroup]="mainForm" class="rating-editor-form">
+    <mat-form-field appearance="fill">
+      <mat-label>{{formFieldsEnum.name}}</mat-label>
+      <input matInput [formControlName]="formFieldsEnum.name" >
+    </mat-form-field>
 
-  <mat-form-field appearance="fill" class="field">
-    <mat-label>Input</mat-label>
-    <input matInput>
-  </mat-form-field>
+    <app-score-rating-editor-list class="rating-editor-list" [formControlName]="formFieldsEnum.rating"></app-score-rating-editor-list>
 
-  <button mat-mini-fab aria-label="delete" matTooltip="delete" class="btn" (click)="deleteElement(i)">
-    <mat-icon>delete</mat-icon>
-  </button>
-</div>
-<button mat-raised-button aria-label="add" matTooltip="add" (click)="addElement()">
-  <mat-icon>add</mat-icon>
-</button>
+    <button mat-raised-button color="primary">Применить</button>
+  </form>
+</mat-card>
