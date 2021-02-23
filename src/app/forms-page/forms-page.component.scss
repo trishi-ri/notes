@@ -1,3 +1,13 @@
-mat-grid-tile {
-  background: lightblue;
+:host {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+
+  .score-editor, .score-viewer {
+    margin: 10px;
+    width: 490px;
+  }
 }

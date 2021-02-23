@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
-import { ScoreRatingModel } from '../score-rating.model';
+import { ScoreRatingService } from '../score-rating.service';
 
 enum FormFieldsEnum {
   name = 'name',
@@ -17,17 +17,17 @@ export class ScoreRatingEditorComponent implements OnInit {
   mainForm: FormGroup = new FormGroup(this.formControls);
   formFieldsEnum = FormFieldsEnum;
 
-  constructor() {
+  constructor(private scoreRatingService: ScoreRatingService) {
   }
 
   ngOnInit(): void {
-    const scoreRating: ScoreRatingModel = {
-      name: 'score',
-      rating: [
-        {name: 'first name', value: 1.23},
-      ]
-    };
+    const scoreRating = this.scoreRatingService.defaultData;
     this.mainForm.patchValue(scoreRating);
+  }
+
+  apply(): void {
+    const formData = this.mainForm.getRawValue();
+    this.scoreRatingService.updateRatingData$(formData);
   }
 
   private get formControls(): {

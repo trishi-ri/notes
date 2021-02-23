@@ -1,7 +1,9 @@
 import { Component, forwardRef, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ScoreModel } from '../../score-rating.model';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
+@UntilDestroy()
 @Component({
   selector: 'app-score-rating-editor-list',
   templateUrl: './score-rating-editor-list.component.html',
@@ -25,6 +27,9 @@ export class ScoreRatingEditorListComponent implements OnInit, ControlValueAcces
   private onTouched = () => {};
 
   constructor() {
+    this.elements.valueChanges
+      .pipe(untilDestroyed(this))
+      .subscribe((elements: ScoreModel[]) => this.onChange(elements));
   }
 
   ngOnInit(): void {

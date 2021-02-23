@@ -9,6 +9,13 @@ import { ScoreRatingEditorListComponent } from './score-rating-editor-list/score
 import { MatIconModule } from '@angular/material/icon';
 import { ScoreRatingEditorElementComponent } from './score-rating-editor-element/score-rating-editor-element.component';
 import { MatCardModule } from '@angular/material/card';
+import { ScoreRatingService } from '../score-rating.service';
+import { ScoreRatingModel } from '../score-rating.model';
+
+const scoreRatingServiceStub: Partial<ScoreRatingService> = {
+  updateRatingData$: () => {},
+  defaultData: {name: '', rating: []} as ScoreRatingModel
+};
 
 describe('ScoreRatingEditorComponent', () => {
   let component: ScoreRatingEditorComponent;
@@ -25,6 +32,9 @@ describe('ScoreRatingEditorComponent', () => {
         BrowserAnimationsModule,
         ReactiveFormsModule,
         MatCardModule
+      ],
+      providers: [
+        {provide: ScoreRatingService, useValue: scoreRatingServiceStub}
       ]
     })
     .compileComponents();
@@ -38,5 +48,11 @@ describe('ScoreRatingEditorComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('#apply should call update method', () => {
+    spyOn(scoreRatingServiceStub, 'updateRatingData$');
+    component.apply();
+    expect(scoreRatingServiceStub.updateRatingData$).toHaveBeenCalled();
   });
 });

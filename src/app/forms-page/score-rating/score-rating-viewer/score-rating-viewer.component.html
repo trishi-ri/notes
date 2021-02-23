@@ -1,0 +1,4 @@
+<mat-card class="view-wrapper">
+  <span *ngIf="(scoreRating$ | async) === undefined">No data.</span>
+  <span *ngIf="scoreRating$ | async as scoreRating">{{scoreRating | json}}</span>
+</mat-card>

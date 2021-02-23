@@ -1,12 +1,14 @@
 import { Component, EventEmitter, forwardRef, OnInit, Output } from '@angular/core';
 import { AbstractControl, ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ScoreModel } from '../../score-rating.model';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 enum FormFieldsEnum {
   name = 'name',
   value = 'value'
 }
 
+@UntilDestroy()
 @Component({
   selector: 'app-sort-rating-editor-element',
   templateUrl: './score-rating-editor-element.component.html',
@@ -32,6 +34,9 @@ export class ScoreRatingEditorElementComponent implements OnInit, ControlValueAc
   constructor() { }
 
   ngOnInit(): void {
+    this.mainForm.valueChanges
+      .pipe(untilDestroyed(this))
+      .subscribe((score: ScoreModel) => this.onChange(score));
   }
 
   private get formControls(): {

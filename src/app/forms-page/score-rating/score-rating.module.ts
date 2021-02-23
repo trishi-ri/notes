@@ -9,11 +9,14 @@ import { ScoreRatingEditorComponent } from './score-rating-editor/score-rating-e
 import { ScoreRatingEditorElementComponent } from './score-rating-editor/score-rating-editor-element/score-rating-editor-element.component';
 import { ScoreRatingEditorListComponent } from './score-rating-editor/score-rating-editor-list/score-rating-editor-list.component';
 import { MatCardModule } from '@angular/material/card';
+import { ScoreRatingService } from './score-rating.service';
+import { ScoreRatingViewerComponent } from './score-rating-viewer/score-rating-viewer.component';
 
 const COMPONENTS = [
   ScoreRatingEditorComponent,
   ScoreRatingEditorElementComponent,
-  ScoreRatingEditorListComponent
+  ScoreRatingEditorListComponent,
+  ScoreRatingViewerComponent,
 ];
 
 const MATERIAL_MODULES = [
@@ -31,6 +34,9 @@ const MATERIAL_MODULES = [
     CommonModule,
     ReactiveFormsModule,
     ...MATERIAL_MODULES
+  ],
+  providers: [
+    ScoreRatingService
   ]
 })
 export class ScoreRatingModule {
