@@ -6,6 +6,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TextFieldComponent } from '../../../fields/text-field/text-field.component';
+import { NumberFieldComponent } from '../../../fields/number-field/number-field.component';
 
 describe('ScoreRatingEditorElementComponent', () => {
   let component: ScoreRatingEditorElementComponent;
@@ -13,7 +15,7 @@ describe('ScoreRatingEditorElementComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ScoreRatingEditorElementComponent ],
+      declarations: [ ScoreRatingEditorElementComponent, TextFieldComponent, NumberFieldComponent ],
       imports: [
         MatIconModule,
         MatFormFieldModule,
@@ -39,12 +41,12 @@ describe('ScoreRatingEditorElementComponent', () => {
   describe('setDisabledState', () => {
     it('should disable form', () => {
       component.setDisabledState(true);
-      expect(component.mainForm.disabled).toBe(true);
+      expect(component.formGroup.disabled).toBe(true);
     });
 
     it('should enable form', () => {
       component.setDisabledState(false);
-      expect(component.mainForm.enabled).toBe(true);
+      expect(component.formGroup.enabled).toBe(true);
     });
   });
 });

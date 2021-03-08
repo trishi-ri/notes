@@ -11,6 +11,7 @@ import { ScoreRatingEditorListComponent } from './score-rating-editor/score-rati
 import { MatCardModule } from '@angular/material/card';
 import { ScoreRatingService } from './score-rating.service';
 import { ScoreRatingViewerComponent } from './score-rating-viewer/score-rating-viewer.component';
+import { FieldsModule } from '../fields/fields.module';
 
 const COMPONENTS = [
   ScoreRatingEditorComponent,
@@ -33,7 +34,8 @@ const MATERIAL_MODULES = [
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    ...MATERIAL_MODULES
+    ...MATERIAL_MODULES,
+    FieldsModule
   ],
   providers: [
     ScoreRatingService

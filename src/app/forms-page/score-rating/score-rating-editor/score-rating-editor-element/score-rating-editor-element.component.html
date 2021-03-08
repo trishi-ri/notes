@@ -1,13 +1,7 @@
-<form [formGroup]="mainForm" class="element">
-  <mat-form-field appearance="fill" class="field">
-    <mat-label>{{formFieldsEnum.name}}</mat-label>
-    <input matInput [formControlName]="formFieldsEnum.name" >
-  </mat-form-field>
+<form [formGroup]="formGroup" class="element">
+  <app-text-field class="field" [formControlName]="formFieldsEnum.name" [label]="formFieldsEnum.name"></app-text-field>
 
-  <mat-form-field appearance="fill" class="field">
-    <mat-label>{{formFieldsEnum.value}}</mat-label>
-    <input matInput [formControlName]="formFieldsEnum.value" >
-  </mat-form-field>
+  <app-number-field class="field" [formControlName]="formFieldsEnum.value" [label]="formFieldsEnum.value" [step]="0.01"></app-number-field>
 
   <button type="button" mat-mini-fab aria-label="delete" matTooltip="delete" class="btn" (click)="deleteElementEvent.emit()">
     <mat-icon>delete</mat-icon>

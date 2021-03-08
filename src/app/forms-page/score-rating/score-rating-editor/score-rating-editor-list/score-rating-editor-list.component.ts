@@ -1,7 +1,8 @@
 import { Component, forwardRef, OnInit } from '@angular/core';
-import { ControlValueAccessor, FormArray, FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, FormArray, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ScoreModel } from '../../score-rating.model';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { FormComponent } from '../../../fields/form.abstract';
 
 @UntilDestroy()
 @Component({
@@ -16,23 +17,20 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
     }
   ]
 })
-export class ScoreRatingEditorListComponent implements OnInit, ControlValueAccessor {
+export class ScoreRatingEditorListComponent extends FormComponent<ScoreModel[]> implements OnInit, ControlValueAccessor {
 
-  mainForm = new FormGroup({
-    elements: new FormArray([])
-  });
-  elements = this.mainForm.get('elements') as FormArray;
-
-  private onChange = (value: any) => {};
-  private onTouched = () => {};
+  elements = this.formGroup.get('elements') as FormArray;
 
   constructor() {
-    this.elements.valueChanges
-      .pipe(untilDestroyed(this))
-      .subscribe((elements: ScoreModel[]) => this.onChange(elements));
+    super({
+      elements: new FormArray([])
+    });
   }
 
   ngOnInit(): void {
+    this.elements.valueChanges
+      .pipe(untilDestroyed(this))
+      .subscribe((elements: ScoreModel[]) => this.onChange(elements));
   }
 
   addElement(): void {
@@ -43,22 +41,12 @@ export class ScoreRatingEditorListComponent implements OnInit, ControlValueAcces
     this.elements.removeAt(index);
   }
 
-  registerOnChange(fn: any): void {
-    this.onChange = fn;
-  }
-
-  registerOnTouched(fn: () => {}): void {
-    this.onTouched = fn;
-  }
-
-  setDisabledState(isDisabled: boolean): void {
-    isDisabled ? this.mainForm.disable() : this.mainForm.enable();
-  }
-
   writeValue(scores: ScoreModel[]): void {
     this.elements.clear();
-    scores.forEach(() => this.addElement());
-    this.elements.patchValue(scores);
+    if (scores) {
+      scores.forEach(() => this.addElement());
+      this.elements.patchValue(scores);
+    }
   }
 
 }

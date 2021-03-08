@@ -3,9 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsPageComponent } from './forms-page.component';
 import { FormsPageRoutingModule } from './forms-page.routing.module';
 import { ScoreRatingModule } from './score-rating/score-rating.module';
-
-const MATERIAL_MODULES = [
-];
+import { FieldsModule } from './fields/fields.module';
 
 @NgModule({
   declarations: [FormsPageComponent],
@@ -13,7 +11,7 @@ const MATERIAL_MODULES = [
     CommonModule,
     FormsPageRoutingModule,
     ScoreRatingModule,
-    ...MATERIAL_MODULES
+    FieldsModule
   ]
 })
 export class FormsPageModule {

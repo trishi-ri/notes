@@ -1,4 +1,4 @@
-<form [formGroup]="mainForm">
+<form [formGroup]="formGroup">
   <ng-container formArrayName="elements">
     <app-sort-rating-editor-element
       *ngFor="let _ of elements.controls; index as i"

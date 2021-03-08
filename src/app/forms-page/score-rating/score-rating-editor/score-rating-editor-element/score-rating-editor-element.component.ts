@@ -1,7 +1,8 @@
 import { Component, EventEmitter, forwardRef, OnInit, Output } from '@angular/core';
-import { AbstractControl, ControlValueAccessor, FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ScoreModel } from '../../score-rating.model';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { FormComponent } from '../../../fields/form.abstract';
 
 enum FormFieldsEnum {
   name = 'name',
@@ -21,48 +22,27 @@ enum FormFieldsEnum {
     }
   ]
 })
-export class ScoreRatingEditorElementComponent implements OnInit, ControlValueAccessor {
+export class ScoreRatingEditorElementComponent extends FormComponent<ScoreModel> implements OnInit, ControlValueAccessor {
 
   @Output() deleteElementEvent = new EventEmitter<void>();
 
-  mainForm: FormGroup = new FormGroup(this.formControls);
   formFieldsEnum = FormFieldsEnum;
 
-  private onChange = (value: any) => {};
-  private onTouched = () => {};
-
-  constructor() { }
+  constructor() {
+    super({
+      [FormFieldsEnum.name]: new FormControl(),
+      [FormFieldsEnum.value]: new FormControl(),
+    });
+  }
 
   ngOnInit(): void {
-    this.mainForm.valueChanges
+    this.formGroup.valueChanges
       .pipe(untilDestroyed(this))
       .subscribe((score: ScoreModel) => this.onChange(score));
   }
 
-  private get formControls(): {
-    [key: string]: AbstractControl;
-  } {
-    return {
-      [FormFieldsEnum.name]: new FormControl(),
-      [FormFieldsEnum.value]: new FormControl(),
-    };
+  writeValue(value: ScoreModel): void {
+    this.formGroup.patchValue(value);
   }
-
-  registerOnChange(fn: any): void {
-    this.onChange = fn;
-  }
-
-  registerOnTouched(fn: () => {}): void {
-    this.onTouched = fn;
-  }
-
-  setDisabledState(isDisabled: boolean): void {
-    isDisabled ? this.mainForm.disable() : this.mainForm.enable();
-  }
-
-  writeValue(score: ScoreModel): void {
-    this.mainForm.patchValue(score);
-  }
-
 
 }

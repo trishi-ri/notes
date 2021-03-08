@@ -41,12 +41,12 @@ describe('ScoreRatingEditorListComponent', () => {
   describe('setDisabledState', () => {
     it('should disable form', () => {
       component.setDisabledState(true);
-      expect(component.mainForm.disabled).toBe(true);
+      expect(component.formGroup.disabled).toBe(true);
     });
 
     it('should enable form', () => {
       component.setDisabledState(false);
-      expect(component.mainForm.enabled).toBe(true);
+      expect(component.formGroup.enabled).toBe(true);
     });
   });
 
